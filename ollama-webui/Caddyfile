@@ -1,0 +1,3 @@
+http://ms01.lab {
+    reverse_proxy open-webui:8080
+}
