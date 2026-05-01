@@ -1,0 +1,3 @@
+http://homelab.local {
+    reverse_proxy open-webui:8080
+}

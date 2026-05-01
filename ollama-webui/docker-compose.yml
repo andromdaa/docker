@@ -18,9 +18,22 @@ services:
       - OLLAMA_BASE_URL=http://ollama:11434
     volumes:
       - open_webui_data:/app/backend/data
+
+  caddy:
+    image: caddy:latest
+    container_name: caddy
+    restart: unless-stopped
+    depends_on:
+      - open-webui
     ports:
-      - "3000:8080"
+      - "80:80"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
 
 volumes:
   ollama_models:
   open_webui_data:
+  caddy_data:
+  caddy_config:
